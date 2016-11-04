@@ -87,3 +87,14 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Experiment logs
+log*
+
+# Tensorflow checkpoints
+*.ckpt
+*.ckpt.meta
+checkpoint
+
+# Tensorflow events
+events.out.tfevents*
