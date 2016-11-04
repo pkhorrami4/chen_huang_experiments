@@ -11,7 +11,7 @@ Thomas S. Huang and Stephen Levinson
 	4. Independent-HMM
 	5. MFHMM
 
-|		   |  Face  |  Pitch  |  Energy  |  IHMM  |  FHMM  |   
+|	   |  Face  |  Pitch  |  Energy  |  IHMM  |  FHMM  |   
 |11 states |  38.64 |  57.27  |  66.36   |  72.42 |  80.61 |
 | 7 states |  52.38 |  63.81  |  70.71   |  75.24 |  85.24 |
 
@@ -30,7 +30,7 @@ Zhihong Zeng, Jilin Tu, Ming Liu and Thomas S. Huang
 	5. MFHMM2
 	6. MFHMM3
 
-|		   |  Face  |  Pitch  |  Energy  |  MHMM1  |  MHMM2  |  MHMM3  |   
+|          |  Face  |  Pitch  |  Energy  |  MHMM1  |  MHMM2  |  MHMM3  |   
 |11 states |  0.39  |  0.60   |   0.69   |   0.70  |   0.72  |   0.75  | 
 
 
