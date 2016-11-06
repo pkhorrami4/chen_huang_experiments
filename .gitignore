@@ -88,6 +88,9 @@ ENV/
 # Rope project settings
 .ropeproject
 
+# txt files
+*.txt
+
 # Experiment logs
 log*
 
