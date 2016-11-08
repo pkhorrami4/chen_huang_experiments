@@ -93,7 +93,6 @@ if __name__ == "__main__":
                                           remove_easy=remove_easy)
     data_dict_test = data_loader_test.load()
 
-
     X_train = data_dict_train['X']
     y_train = data_dict_train['y']
 
