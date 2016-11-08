@@ -62,6 +62,10 @@ if __name__ == "__main__":
     val_folds = data_dict['val_folds']
     test_folds = data_dict['test_folds']
     remove_labels = data_dict['remove_labels']
+    if 'remove_easy' in data_dict.keys():
+        remove_easy = data_dict['remove_easy']
+    else:
+        remove_easy = False
 
     batch_size = model_dict['batch_size']
     max_sequence_length = model_dict['max_sequence_length']
@@ -71,7 +75,7 @@ if __name__ == "__main__":
                                            feat_type=feat_type, 
                                            fold_type=fold_type,
                                            which_fold=train_folds,
-                                           remove_easy=True)
+                                           remove_easy=remove_easy)
     data_dict_train = data_loader_train.load()
 
 
@@ -79,7 +83,7 @@ if __name__ == "__main__":
                                          feat_type=feat_type, 
                                          fold_type=fold_type,
                                          which_fold=val_folds,
-                                         remove_easy=True)
+                                         remove_easy=remove_easy)
     data_dict_val = data_loader_val.load()
 
 
@@ -87,7 +91,7 @@ if __name__ == "__main__":
                                           feat_type=feat_type, 
                                           fold_type=fold_type,
                                           which_fold=test_folds,
-                                          remove_easy=True)
+                                          remove_easy=remove_easy)
     data_dict_test = data_loader_test.load()
 
 
