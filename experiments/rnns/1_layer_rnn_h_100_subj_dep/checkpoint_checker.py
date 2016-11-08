@@ -70,21 +70,21 @@ if __name__ == "__main__":
     data_loader_train = LandmarkDataLoader(dataset_path,
                                            feat_type=feat_type, 
                                            fold_type=fold_type,
-                                           which_fold=train_folds)
+                                           which_fold=train_folds)                                           
     data_dict_train = data_loader_train.load()
 
 
     data_loader_val = LandmarkDataLoader(dataset_path,
                                          feat_type=feat_type, 
                                          fold_type=fold_type,
-                                         which_fold=val_folds)
+                                         which_fold=val_folds)                                         
     data_dict_val = data_loader_val.load()
 
 
     data_loader_test = LandmarkDataLoader(dataset_path,
                                           feat_type=feat_type, 
                                           fold_type=fold_type,
-                                          which_fold=test_folds)
+                                          which_fold=test_folds)                                          
     data_dict_test = data_loader_test.load()
 
 
@@ -132,7 +132,7 @@ if __name__ == "__main__":
     print x_val_all.shape, y_val_all.shape, seq_lengths_val_all.shape
 
     y_batch = numpy.tile(y_val_all[:, None], (1, max_sequence_length))
-    mask_val = make_mask(seq_lengths_val_all, 220, max_sequence_length)
+    mask_val = make_mask(seq_lengths_val_all.astype('int'), 220, max_sequence_length)
     x_batch_norm = normalizer.run(x_val_all)
 
     checkpoint_files = sorted(glob(os.path.join(checkpoint_dir, '*.ckpt')))
@@ -145,10 +145,14 @@ if __name__ == "__main__":
         val_accuracy = model.get_accuracy_clip(x_batch_norm, y_batch, seq_lengths_val_all, mask_val)
         print 'Val Accuracy: %f' % val_accuracy
         accuracies_val.append(val_accuracy)
-    
-    max_val_accuracy = numpy.max(numpy.array(accuracies_val))
-    max_checkpoint_ind = numpy.argmax(numpy.array(accuracies_val))
+
+    accuracies_val = numpy.array(accuracies_val)
+    accuracies_val = numpy.around(accuracies_val, 5)
+    max_val_accuracy = numpy.max(accuracies_val)
+    max_checkpoint_ind = numpy.argmax(accuracies_val)
     max_checkpoint = checkpoint_files[max_checkpoint_ind]
+    # print 'Accuracies_val: %s' % accuracies_val
+    print 'Checkpoint_ind: %d' % max_checkpoint_ind
     print 'Max Checkpoint: %s' % max_checkpoint
     print 'Max Val Accuracy: %f' % max_val_accuracy
 
@@ -157,7 +161,7 @@ if __name__ == "__main__":
     print x_test_all.shape, y_test_all.shape, seq_lengths_test_all.shape
 
     y_batch = numpy.tile(y_test_all[:, None], (1, max_sequence_length))
-    mask_test = make_mask(seq_lengths_test_all, 220, max_sequence_length)
+    mask_test = make_mask(seq_lengths_test_all.astype('int'), 220, max_sequence_length)
     x_batch_norm = normalizer.run(x_test_all)
 
     #inds = range(0, 220)
