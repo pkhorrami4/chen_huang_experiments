@@ -1,0 +1,30 @@
+data:
+    dataset_path: '/data/Expr_Recog/Chen_Huang_avdata_python_augmented/npy_files/all/'
+    feat_type: 'landmarks'
+    fold_type: 'subj_dep'
+    train_folds: [1]
+    val_folds: [2]
+    test_folds: [0]
+    remove_labels: []
+    # remove_labels: ['0', '7', '8', '9', '10', '11']
+
+model:    
+    input_size: 136
+    batch_size: 32
+    max_sequence_length: 400
+    num_classes: 11
+    state_size: 100    
+    cell_type: 'basic_rnn'
+    num_layers: 2
+    learning_rate: 0.01
+    decay_lr: True
+    decay_steps: 2800
+    decay_rate: 0.1
+    save_path: './checkpoints_1/'
+    summary_path: './summaries/split_1'
+
+train:
+    total_num_steps: 14000
+    disp_step: 10
+    val_step: 50
+    save_step: 1400
